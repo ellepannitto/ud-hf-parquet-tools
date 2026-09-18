@@ -207,7 +207,6 @@ def extract_examples_from_conllu(filepath: str) -> List[Dict[str, Any]]:
             example = {
                 "sent_id": sent_id,
                 "text": text,
-                "comments": comments,
                 "tokens": tokens,
                 "lemmas": [token["lemma"] for token in sent_filtered],
                 "upos": [token["upos"] for token in sent_filtered],
@@ -217,6 +216,7 @@ def extract_examples_from_conllu(filepath: str) -> List[Dict[str, Any]]:
                 "deprel": [str(token["deprel"]) if token["deprel"] else "_" for token in sent_filtered],
                 "deps": deps_list,
                 "misc": misc_list,
+                "comments": comments,
                 "mwt": mwts,
                 "empty_nodes": empty_nodes,
             }
@@ -319,7 +319,6 @@ def generate_parquet_for_treebank(
             {
                 "sent_id": datasets.Value("string"),
                 "text": datasets.Value("string"),
-                "comments": datasets.Sequence(datasets.Value("string")),
                 "tokens": datasets.Sequence(datasets.Value("string")),
                 "lemmas": datasets.Sequence(datasets.Value("string")),
                 "upos": datasets.Sequence(datasets.Value("string")),
@@ -329,6 +328,7 @@ def generate_parquet_for_treebank(
                 "deprel": datasets.Sequence(datasets.Value("string")),
                 "deps": datasets.Sequence(datasets.Value("string")),
                 "misc": datasets.Sequence(datasets.Value("string")),
+                "comments": datasets.Sequence(datasets.Value("string")),
                 "mwt": [
                     {
                         "id": datasets.Value("string"),

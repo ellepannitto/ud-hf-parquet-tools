@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Reorder generated parquet columns to `sent_id, text, tokens, lemmas, upos, xpos, feats, head,
+  deprel, deps, misc, comments, mwt, empty_nodes`. Existing files need `--overwrite` to pick up
+  the new order.
+
 ## [1.3.0] - 2026-08-18
 
 ### Changed
