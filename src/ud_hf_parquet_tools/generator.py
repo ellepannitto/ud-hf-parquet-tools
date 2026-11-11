@@ -205,7 +205,6 @@ def extract_examples_from_conllu(filepath: str) -> List[Dict[str, Any]]:
             # - Required text fields (FORM, LEMMA, UPOS, DEPREL): always string.
             # - Optional fields (XPOS, FEATS, DEPS, MISC): None when unspecified.
             example = {
-                "sent_id": sent_id,
                 "text": text,
                 "tokens": tokens,
                 "lemmas": [token["lemma"] for token in sent_filtered],
@@ -219,6 +218,7 @@ def extract_examples_from_conllu(filepath: str) -> List[Dict[str, Any]]:
                 "comments": comments,
                 "mwt": mwts,
                 "empty_nodes": empty_nodes,
+                "sent_id": sent_id,
             }
 
             examples.append(example)
@@ -317,7 +317,6 @@ def generate_parquet_for_treebank(
         # Define features
         features = datasets.Features(
             {
-                "sent_id": datasets.Value("string"),
                 "text": datasets.Value("string"),
                 "tokens": datasets.Sequence(datasets.Value("string")),
                 "lemmas": datasets.Sequence(datasets.Value("string")),
@@ -351,6 +350,7 @@ def generate_parquet_for_treebank(
                         "misc": datasets.Value("string"),
                     }
                 ],
+                "sent_id": datasets.Value("string"),
             }
         )
 

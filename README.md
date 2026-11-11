@@ -151,9 +151,7 @@ Generated Parquet files include:
 
 ```python
 {
-    "sent_id": str,              # Sentence ID
     "text": str,                 # Full sentence text
-    "comments": [str],           # Metadata comments (ordered, with duplicates)
     "tokens": [str],             # Word forms (syntactic words only)
     "lemmas": [str],             # Lemmas
     "upos": [str],               # Universal POS tags
@@ -163,6 +161,7 @@ Generated Parquet files include:
     "deprel": [str],             # Dependency relations
     "deps": [str],               # Enhanced dependencies
     "misc": [str],               # Miscellaneous annotations
+    "comments": [str],           # Metadata comments (ordered, with duplicates)
     "mwt": [{                    # Multi-word tokens
         "id": str,                 # e.g., "1-2"
         "form": str,
@@ -173,7 +172,8 @@ Generated Parquet files include:
         "id": str,                 # e.g., "22.1"
         "form": str,
         # ... all 10 CoNLL-U fields
-    }]
+    }],
+    "sent_id": str               # Sentence ID
 }
 ```
 
